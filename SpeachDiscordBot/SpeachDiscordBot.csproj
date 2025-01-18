@@ -8,6 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="CSharpFunctionalExtensions" Version="3.4.3" />
         <PackageReference Include="Discord.Net" Version="3.17.0"/>
         <PackageReference Include="libsodium" Version="1.0.20.1" />
         <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0"/>

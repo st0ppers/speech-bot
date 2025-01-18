@@ -1,6 +1,6 @@
 ﻿using Discord.Commands;
 using Microsoft.Extensions.Configuration;
-using SpeachDiscordBot.Configuration;
+using SpeachDiscordBot.Extensions;
 
 namespace SpeachDiscordBot.Commands.Loldle;
 
@@ -12,12 +12,12 @@ public class LoldleGameModule : ModuleBase<SocketCommandContext>
     public async Task TestAsync()
     {
         _httpClient.BaseAddress = new Uri(
-            Extensions.Configuration.GetRequiredSection("LeagueOfLegendsApi:BaseUrl").Value +
-            Extensions.Configuration.GetRequiredSection("LeagueOfLegendsApi:Patch").Value +
-            Extensions.Configuration.GetRequiredSection("LeagueOfLegendsApi:Format").Value +
-            Extensions.Configuration.GetRequiredSection("LeagueOfLegendsApi:Language").Value
+            DependencyInjection.Configuration.GetRequiredSection("LeagueOfLegendsApi:BaseUrl").Value +
+            DependencyInjection.Configuration.GetRequiredSection("LeagueOfLegendsApi:Patch").Value +
+            DependencyInjection.Configuration.GetRequiredSection("LeagueOfLegendsApi:Format").Value +
+            DependencyInjection.Configuration.GetRequiredSection("LeagueOfLegendsApi:Language").Value
         );
-        var endpoint = Extensions.Configuration.GetRequiredSection("LeagueOfLegendsApi:Endpoint").Value;
+        var endpoint = DependencyInjection.Configuration.GetRequiredSection("LeagueOfLegendsApi:Endpoint").Value;
         try
         {
             var response = await _httpClient.GetAsync(endpoint);

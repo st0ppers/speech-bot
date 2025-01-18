@@ -5,7 +5,7 @@ using Discord.WebSocket;
 using Microsoft.Extensions.Configuration;
 using Serilog;
 using Serilog.Events;
-using SpeachDiscordBot.Configuration;
+using SpeachDiscordBot.Extensions;
 
 namespace SpeachDiscordBot.Commands;
 
@@ -19,6 +19,7 @@ public class CommandHandler(IServiceProvider services, CommandService commands, 
 
     public async Task InitializeAsync()
     {
+        Logger.Information("Initializing command handler");
         InitialLogger();
         await InitialCommandASync();
     }
@@ -45,7 +46,7 @@ public class CommandHandler(IServiceProvider services, CommandService commands, 
         }
 
         var argPos = 0;
-        if (!msg.HasStringPrefix(Extensions.Configuration.GetRequiredSection("Prefix").Value, ref argPos) || msg.HasMentionPrefix(client.CurrentUser, ref argPos) || msg.Author.IsBot)
+        if (!msg.HasStringPrefix(DependencyInjection.Configuration.GetRequiredSection("Prefix").Value, ref argPos) || msg.HasMentionPrefix(client.CurrentUser, ref argPos) || msg.Author.IsBot)
         {
             return;
         }
