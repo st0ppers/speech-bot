@@ -2,8 +2,10 @@
 using Discord.WebSocket;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using SpeachDiscordBot.Commands;
-using SpeachDiscordBot.Extensions;
+using SpeechDiscordBot.Commands;
+using SpeechDiscordBot.Extensions;
+
+namespace SpeechDiscordBot;
 
 class Program
 {
@@ -13,8 +15,8 @@ class Program
         var client = services.GetRequiredService<DiscordSocketClient>();
         var commandHandler = services.GetRequiredService<CommandHandler>();
         await commandHandler.InitializeAsync();
-        
-        await client.LoginAsync(TokenType.Bot, DependencyInjection.Configuration.GetRequiredSection("Token").Value);
+
+        await client.LoginAsync(TokenType.Bot, DependencyInjection.Configuration.GetRequiredSection("Discord:Token").Value);
         await client.StartAsync();
 
         await Task.Delay(-1);

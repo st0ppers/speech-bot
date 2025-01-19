@@ -3,13 +3,15 @@ using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using Serilog;
 using Serilog.Events;
-using SpeachDiscordBot.Extensions;
+using SpeechDiscordBot.Configuration;
+using SpeechDiscordBot.Extensions;
 
-namespace SpeachDiscordBot.Commands;
+namespace SpeechDiscordBot.Commands;
 
-public class CommandHandler(IServiceProvider services, CommandService commands, DiscordSocketClient client)
+public class CommandHandler(IOptions<DiscordConfigruation> config, IServiceProvider services, CommandService commands, DiscordSocketClient client)
 {
     private static readonly ILogger Logger = new LoggerConfiguration()
         .MinimumLevel.Debug()
@@ -46,7 +48,7 @@ public class CommandHandler(IServiceProvider services, CommandService commands, 
         }
 
         var argPos = 0;
-        if (!msg.HasStringPrefix(DependencyInjection.Configuration.GetRequiredSection("Prefix").Value, ref argPos) || msg.HasMentionPrefix(client.CurrentUser, ref argPos) || msg.Author.IsBot)
+        if (!msg.HasStringPrefix(config.Value.Prefix, ref argPos) || msg.HasMentionPrefix(client.CurrentUser, ref argPos) || msg.Author.IsBot)
         {
             return;
         }

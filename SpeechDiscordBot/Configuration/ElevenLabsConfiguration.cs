@@ -1,4 +1,4 @@
-﻿namespace SpeachDiscordBot.Configuration;
+﻿namespace SpeechDiscordBot.Configuration;
 
 public class ElevenLabsConfiguration
 {

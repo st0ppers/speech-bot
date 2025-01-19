@@ -6,12 +6,12 @@ using Discord.Audio;
 using Discord.Commands;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
-using SpeachDiscordBot.Client;
-using SpeachDiscordBot.Configuration;
-using SpeachDiscordBot.Exceptions;
-using SpeachDiscordBot.Extensions;
+using SpeechDiscordBot.Client;
+using SpeechDiscordBot.Configuration;
+using SpeechDiscordBot.Exceptions;
+using SpeechDiscordBot.Extensions;
 
-namespace SpeachDiscordBot.Commands;
+namespace SpeechDiscordBot.Commands;
 
 public class Voice(IOptions<ElevenLabsConfiguration> config, ElevenLabsClient client) : ModuleBase<SocketCommandContext>
 {

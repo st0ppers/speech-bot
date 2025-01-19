@@ -1,4 +1,4 @@
-﻿namespace SpeachDiscordBot.Exceptions;
+﻿namespace SpeechDiscordBot.Exceptions;
 
 public sealed class HttpException : Exception
 {

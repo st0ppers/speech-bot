@@ -1,8 +1,8 @@
 ﻿using Discord.Commands;
 using Microsoft.Extensions.Configuration;
-using SpeachDiscordBot.Extensions;
+using SpeechDiscordBot.Extensions;
 
-namespace SpeachDiscordBot.Commands.Loldle;
+namespace SpeechDiscordBot.Commands.Loldle;
 
 public class LoldleGameModule : ModuleBase<SocketCommandContext>
 {

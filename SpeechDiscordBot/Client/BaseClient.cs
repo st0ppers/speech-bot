@@ -1,9 +1,9 @@
 ﻿using System.Runtime.Serialization;
 using System.Text.Json;
 using CSharpFunctionalExtensions;
-using SpeachDiscordBot.Exceptions;
+using SpeechDiscordBot.Exceptions;
 
-namespace SpeachDiscordBot.Client;
+namespace SpeechDiscordBot.Client;
 
 public abstract class BaseClient
 {

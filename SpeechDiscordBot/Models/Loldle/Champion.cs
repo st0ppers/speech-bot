@@ -1,4 +1,4 @@
-﻿namespace SpeachDiscordBot.Models.Loldle;
+﻿namespace SpeechDiscordBot.Models.Loldle;
 
 public sealed record Champion
 {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Options;
-using SpeachDiscordBot.Configuration;
+using SpeechDiscordBot.Configuration;
 
-namespace SpeachDiscordBot.Client;
+namespace SpeechDiscordBot.Client;
 
 public sealed class ElevenLabsClient(IOptions<ElevenLabsConfiguration> options) : BaseClient(options.Value.BaseUrl + options.Value.OldManId + '?' + options.Value.Options.ToParameters(), "xi-api-key", options.Value.Key);

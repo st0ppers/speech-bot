@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace SpeachDiscordBot.Configuration;
+namespace SpeechDiscordBot.Configuration;
 
 public static class Extensions
 {

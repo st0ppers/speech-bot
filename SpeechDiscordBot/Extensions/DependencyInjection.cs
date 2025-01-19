@@ -3,11 +3,11 @@ using Discord.Commands;
 using Discord.WebSocket;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using SpeachDiscordBot.Client;
-using SpeachDiscordBot.Commands;
-using SpeachDiscordBot.Configuration;
+using SpeechDiscordBot.Client;
+using SpeechDiscordBot.Commands;
+using SpeechDiscordBot.Configuration;
 
-namespace SpeachDiscordBot.Extensions;
+namespace SpeechDiscordBot.Extensions;
 
 public static class DependencyInjection
 {
@@ -29,6 +29,7 @@ public static class DependencyInjection
     private static IServiceCollection AddConfiguration(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddOptions<ElevenLabsConfiguration>().Bind(configuration.GetRequiredSection(ElevenLabsConfiguration.Section));
+        services.AddOptions<DiscordConfigruation>().Bind(configuration.GetRequiredSection(DiscordConfigruation.Section));
         return services;
     }
 

@@ -1,7 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 using CSharpFunctionalExtensions;
 
-namespace SpeachDiscordBot.Extensions;
+namespace SpeechDiscordBot.Extensions;
 
 public static class ResultExtensions
 {
