@@ -3,7 +3,7 @@
 public sealed class DiscordConfigruation
 {
     public const string Section = "Discord";
-    public string Token { get; set; }
-    public string Prefix { get; set; }
+    public required string Token { get; set; }
+    public required string Prefix { get; set; }
     
 }

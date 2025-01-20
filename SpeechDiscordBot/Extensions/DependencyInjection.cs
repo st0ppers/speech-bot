@@ -3,6 +3,7 @@ using Discord.Commands;
 using Discord.WebSocket;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Serilog;
 using SpeechDiscordBot.Client;
 using SpeechDiscordBot.Commands;
 using SpeechDiscordBot.Configuration;
@@ -11,6 +12,12 @@ namespace SpeechDiscordBot.Extensions;
 
 public static class DependencyInjection
 {
+    private static readonly ILogger Logger = new LoggerConfiguration()
+        .MinimumLevel.Debug()
+        .Enrich.FromLogContext()
+        .WriteTo.Console()
+        .CreateLogger();
+    
     private static readonly DiscordSocketConfig DiscordSocketConfig = new()
     {
         MessageCacheSize = 100,
@@ -42,7 +49,7 @@ public static class DependencyInjection
             .AddSingleton<CommandService>()
             .AddSingleton<CommandHandler>()
             .AddSingleton<ElevenLabsClient>()
-            //.AddLogging()
+            .AddSingleton(Logger)
             .AddHttpClient();
     }
 

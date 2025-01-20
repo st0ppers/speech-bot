@@ -9,7 +9,7 @@ namespace SpeechDiscordBot;
 
 class Program
 {
-    static async Task Main(string[] args)
+    public static async Task Main()
     {
         var services = DependencyInjection.ServiceProvider;
         var client = services.GetRequiredService<DiscordSocketClient>();

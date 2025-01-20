@@ -1,46 +1,46 @@
-﻿namespace SpeechDiscordBot.Models.Loldle;
+﻿// namespace SpeechDiscordBot.Models.Loldle;
 
-public sealed record Champion
-{
-    public string Name { get; init; }
-    public string Title { get; init; }
-    public string PartType { get; init; }
-    public Gender Gender { get; init; }
-    public Position[] Position { get; init; }
-    public RangeType Range { get; init; }// if range >= 350
-    public Region Region { get; init; }
-    public int YearRelease { get; init; }
+// public sealed record Champion
+// {
+//     public string Name { get; init; }
+//     public string Title { get; init; }
+//     public string PartType { get; init; }
+//     public Gender Gender { get; init; }
+//     public Position[] Position { get; init; }
+//     public RangeType Range { get; init; }// if range >= 350
+//     public Region Region { get; init; }
+//     public int YearRelease { get; init; }
+//
+//     // public ChampionStatistics Statistics { get; init; }
+//     //Specles
+// }
 
-    // public ChampionStatistics Statistics { get; init; }
-    //Specles
-}
+// public enum Gender
+// {
+//     Male,
+//     Female
+// }
 
-public enum Gender
-{
-    Male,
-    Female
-}
-
-public enum Position
-{
-    Top,
-    Jungle,
-    Middle,
-    Bottom,
-    Support
-}
-
-public enum RangeType
-{
-    Range,
-    Mele
-}
-
-public enum Region
-{
-    Freljord,
-    Shurima,
-}
+// public enum Position
+// {
+//     Top,
+//     Jungle,
+//     Middle,
+//     Bottom,
+//     Support
+// }
+//
+// public enum RangeType
+// {
+//     Range,
+//     Mele
+// }
+//
+// public enum Region
+// {
+//     Freljord,
+//     Shurima,
+// }
 
 // public sealed record ChampionStatistics
 // {

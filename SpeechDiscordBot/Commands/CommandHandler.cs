@@ -1,27 +1,20 @@
 ﻿using System.Reflection;
+using System.Runtime.InteropServices;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using Serilog;
 using Serilog.Events;
 using SpeechDiscordBot.Configuration;
-using SpeechDiscordBot.Extensions;
 
 namespace SpeechDiscordBot.Commands;
 
-public class CommandHandler(IOptions<DiscordConfigruation> config, IServiceProvider services, CommandService commands, DiscordSocketClient client)
+public class CommandHandler(IOptions<DiscordConfigruation> config, IServiceProvider services, CommandService commands, DiscordSocketClient client, ILogger logger)
 {
-    private static readonly ILogger Logger = new LoggerConfiguration()
-        .MinimumLevel.Debug()
-        .Enrich.FromLogContext()
-        .WriteTo.Console()
-        .CreateLogger();
-
     public async Task InitializeAsync()
     {
-        Logger.Information("Initializing command handler");
+        Log.Logger.Error("Operating System: {OSDescription}",RuntimeInformation.OSDescription);
         InitialLogger();
         await InitialCommandASync();
     }
@@ -58,7 +51,7 @@ public class CommandHandler(IOptions<DiscordConfigruation> config, IServiceProvi
         await commands.ExecuteAsync(context, argPos, services);
     }
 
-    private static Task LogAsync(LogMessage message)
+    private Task LogAsync(LogMessage message)
     {
         var severity = message.Severity switch
         {
@@ -70,7 +63,7 @@ public class CommandHandler(IOptions<DiscordConfigruation> config, IServiceProvi
             _ => LogEventLevel.Information
         };
 
-        Logger.Write(severity, message.Exception, "[{Source}] {Message}", message.Source, message.Message);
+        logger.Write(severity, message.Exception, "[{Source}] {Message}", message.Source, message.Message);
         return Task.CompletedTask;
     }
 }
